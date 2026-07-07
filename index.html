@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aarav Mehta — Photo Editor &amp; Visual Designer</title>
+<meta name="description" content="Aarav Mehta is a freelance photo editor, graphic designer &amp; content creator specializing in retouching, color grading, brand design and video editing.">
+<meta name="keywords" content="photo editor, graphic designer, content creator, retouching, color grading, freelance designer">
+<meta name="theme-color" content="#0a0a12">
+
+<!-- Favicon -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2244%22 fill=%22%230a0a12%22 stroke=%22url(%23g)%22 stroke-width=%226%22/><circle cx=%2250%22 cy=%2250%22 r=%2216%22 fill=%22none%22 stroke=%22%237c5cff%22 stroke-width=%226%22/><defs><linearGradient id=%22g%22 x1=%220%22 y1=%220%22 x2=%221%22 y2=%221%22><stop offset=%220%22 stop-color=%22%234f8dff%22/><stop offset=%221%22 stop-color=%22%23a45bff%22/></linearGradient></defs></svg>">
+
+<!-- Google Fonts: Poppins -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============ LOADING SCREEN ============ -->
+<div id="loader" aria-hidden="true">
+  <div class="loader-inner">
+    <svg class="loader-aperture" width="90" height="90" viewBox="0 0 100 100">
+      <g class="blades">
+        <path d="M50 50 L50 8 A42 42 0 0 1 84 26 Z"></path>
+        <path d="M50 50 L84 26 A42 42 0 0 1 92 66 Z"></path>
+        <path d="M50 50 L92 66 A42 42 0 0 1 62 92 Z"></path>
+        <path d="M50 50 L62 92 A42 42 0 0 1 20 84 Z"></path>
+        <path d="M50 50 L20 84 A42 42 0 0 1 4 46 Z"></path>
+        <path d="M50 50 L4 46 A42 42 0 0 1 50 8 Z"></path>
+      </g>
+    </svg>
+    <p class="loader-text">FOCUSING<span class="dots">...</span></p>
+    <div class="loader-bar"><span id="loaderProgress"></span></div>
+  </div>
+</div>
+
+<!-- ============ CURSOR ============ -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- ============ SCROLL PROGRESS ============ -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- ============ PARTICLES CANVAS ============ -->
+<canvas id="particles"></canvas>
+
+<!-- ============ NAVBAR ============ -->
+<header class="navbar" id="navbar">
+  <a href="#home" class="logo">AA<span>RAV</span><i class="fa-solid fa-aperture logo-icon"></i></a>
+  <nav class="nav-links" id="navLinks">
+    <a href="#about" class="nav-link">About</a>
+    <a href="#services" class="nav-link">Services</a>
+    <a href="#portfolio" class="nav-link">Portfolio</a>
+    <a href="#compare" class="nav-link">Before/After</a>
+    <a href="#reels" class="nav-link">Reels</a>
+    <a href="#pricing" class="nav-link">Pricing</a>
+    <a href="#blog" class="nav-link">Journal</a>
+    <a href="#contact" class="nav-link">Contact</a>
+  </nav>
+  <div class="nav-actions">
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle light and dark mode">
+      <i class="fa-solid fa-moon"></i>
+    </button>
+    <a href="#contact" class="btn btn-small btn-glow">Hire Me</a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="home">
+  <div class="hero-gradient"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <p class="eyebrow reveal-up"><i class="fa-solid fa-circle-dot"></i> Available for freelance projects</p>
+    <h1 class="hero-title reveal-up">
+      Pixels, refined.<br>
+      Stories, <span class="text-gradient">retouched.</span>
+    </h1>
+    <div class="hero-typing reveal-up">
+      <span>I craft </span><span class="typed-text" id="typedText"></span><span class="cursor-blink">|</span>
+    </div>
+    <p class="hero-sub reveal-up">Freelance Photo Editor, Graphic Designer &amp; Content Creator — turning raw frames into cinematic, scroll-stopping visuals for brands and creators worldwide.</p>
+    <div class="hero-actions reveal-up">
+      <a href="#contact" class="btn btn-primary btn-glow"><i class="fa-solid fa-bolt"></i> Hire Me</a>
+      <a href="#portfolio" class="btn btn-outline"><i class="fa-solid fa-images"></i> View Portfolio</a>
+      <a href="https://wa.me/919999999999" target="_blank" rel="noopener" class="btn btn-whatsapp"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+    </div>
+    <div class="hero-stats reveal-up">
+      <div class="stat"><span class="counter" data-target="6">0</span><small>Years Experience</small></div>
+      <div class="stat"><span class="counter" data-target="480">0</span><small>Projects Delivered</small></div>
+      <div class="stat"><span class="counter" data-target="120">0</span><small>Happy Clients</small></div>
+      <div class="stat"><span class="counter" data-target="15">0</span><small>Countries Served</small></div>
+    </div>
+  </div>
+  <div class="hero-portrait reveal-right">
+    <div class="portrait-ring"></div>
+    <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?q=80&w=800&auto=format&fit=crop" alt="Portrait of Aarav Mehta, photo editor and designer" loading="eager">
+    <div class="portrait-badge"><i class="fa-solid fa-star"></i> 4.9/5 Client Rating</div>
+  </div>
+  <a href="#about" class="scroll-cue" aria-label="Scroll down"><span></span>Scroll</a>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="about" id="about">
+  <div class="section-head">
+    <p class="eyebrow reveal-up">About Me</p>
+    <h2 class="reveal-up">Behind every edit is a decade-long obsession with light, color and detail.</h2>
+  </div>
+  <div class="about-grid">
+    <div class="about-media reveal-left">
+      <img src="https://images.unsplash.com/photo-1520333789090-1afc82db536a?q=80&w=900&auto=format&fit=crop" alt="Aarav Mehta working at a retouching desk" loading="lazy">
+      <div class="glass-card floating-card">
+        <i class="fa-solid fa-award"></i>
+        <div><strong>Adobe Certified</strong><small>Photoshop &amp; Premiere Pro</small></div>
+      </div>
+    </div>
+    <div class="about-text reveal-up">
+      <p>I'm Aarav — a Mumbai-based photo editor, graphic designer, and content creator with over six years of experience helping brands, photographers, and creators turn good images into unforgettable ones.</p>
+      <p>My work lives at the intersection of technical precision and cinematic feeling: color grades that evoke a mood, retouching that stays invisible, and designs built to stop the scroll. I've partnered with fashion labels, e-commerce brands, and independent creators across 15+ countries.</p>
+      <div class="about-timeline">
+        <div class="timeline-item">
+          <span class="timeline-year">2019</span>
+          <div><strong>Started freelancing</strong><small>Photo retouching for e-commerce brands</small></div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">2021</span>
+          <div><strong>Expanded to brand design</strong><small>Logos, posters &amp; social identity systems</small></div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">2023</span>
+          <div><strong>Moved into motion</strong><small>Reels, trailers &amp; short-form video editing</small></div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">2026</span>
+          <div><strong>480+ projects delivered</strong><small>Working with clients across 15 countries</small></div>
+        </div>
+      </div>
+      <a href="#" class="btn btn-outline btn-small" id="resumeBtn"><i class="fa-solid fa-download"></i> Download Resume</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SKILLS ============ -->
+<section class="skills" id="skills">
+  <div class="section-head">
+    <p class="eyebrow reveal-up">Toolkit</p>
+    <h2 class="reveal-up">Software I speak fluently</h2>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-card reveal-up">
+      <i class="fa-brands fa-adobe skill-icon" style="color:#31A8FF"></i>
+      <h3>Photoshop</h3>
+      <div class="skill-bar"><span data-level="97"></span></div>
+    </div>
+    <div class="skill-card reveal-up">
+      <i class="fa-solid fa-camera-retro skill-icon" style="color:#78C7FF"></i>
+      <h3>Lightroom</h3>
+      <div class="skill-bar"><span data-level="95"></span></div>
+    </div>
+    <div class="skill-card reveal-up">
+      <i class="fa-brands fa-adobe skill-icon" style="color:#FF9A00"></i>
+      <h3>Illustrator</h3>
+      <div class="skill-bar"><span data-level="88"></span></div>
+    </div>
+    <div class="skill-card reveal-up">
+      <i class="fa-solid fa-palette skill-icon" style="color:#00C4CC"></i>
+      <h3>Canva</h3>
+      <div class="skill-bar"><span data-level="90"></span></div>
+    </div>
+    <div class="skill-card reveal-up">
+      <i class="fa-solid fa-film skill-icon" style="color:#9999FF"></i>
+      <h3>Premiere Pro</h3>
+      <div class="skill-bar"><span data-level="85"></span></div>
+    </div>
+    <div class="skill-card reveal-up">
+      <i class="fa-solid fa-clapperboard skill-icon" style="color:#CF96FF"></i>
+      <h3>After Effects</h3>
+      <div class="skill-bar"><span data-level="80"></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="services" id="services">
+  <div class="section-head">
+    <p class="eyebrow reveal-up">Services</p>
+    <h2 class="reveal-up">What I can do for your brand</h2>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal-up"><i class="fa-solid fa-image"></i><h3>Photo Editing</h3><p>Detailed pixel-level editing for portraits, products &amp; campaigns.</p></div>
+    <div class="service-card reveal-up"><i class="fa-solid fa-droplet"></i><h3>Color Grading</h3><p>Cinematic tones and mood-driven grades for consistent brand feel.</p></div>
+    <div class="service-card reveal-up"><i class="fa-solid fa-face-smile"></i><h3>Skin Retouching</h3><p>Natural, magazine-grade skin work that never looks over-edited.</p></div>
+    <div class="service-card reveal-up"><i class="fa-solid fa-eraser"></i><h3>Background Removal</h3><p>Clean cut-outs and background replacement for any use case.</p></div>
+    <div class="service-card reveal-up"><i class="fa-solid fa-bag-shopping"></i><h3>Product Editing</h3><p>E-commerce ready shots — shadows, reflections &amp; color accuracy.</p></div>
+    <div class="service-card reveal-up"><i class="fa-solid fa-play"></i><h3>Thumbnail Design</h3><p>Scroll-stopping YouTube thumbnails built to boost click-through.</p></div>
+    <div class="service-card reveal-up"><i class="fa-solid fa-panorama"></i><h3>Poster Design</h3><p>Bold, gallery-worthy posters for events, films &amp; launches.</p></div>
+    <div class="service-card reveal-up"><i class="fa-solid fa-rectangle-ad"></i><h3>Banner Design</h3><p>Web &amp; social banners optimized for every placement.</p></div>
+    <div class="service-card reveal-up"><i class="fa-solid fa-bezier-curve"></i><h3>Logo Design</h3><p>Distinct, timeless marks built on real brand strategy.</p></div>
+    <div class="service-card reveal-up"><i class="fa-solid fa-hashtag"></i><h3>Social Media Design</h3><p>Full content systems — grids, stories &amp; reel covers.</p></div>
+  </div>
+</section>
+
+<!-- ============ PORTFOLIO ============ -->
+<section class="portfolio" id="portfolio">
+  <div class="section-head">
+    <p class="eyebrow reveal-up">Portfolio</p>
+    <h2 class="reveal-up">Selected work</h2>
+  </div>
+  <div class="portfolio-filters reveal-up">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="photo">Photo Editing</button>
+    <button class="filter-btn" data-filter="design">Graphic Design</button>
+    <button class="filter-btn" data-filter="social">Social Media</button>
+    <button class="filter-btn" data-filter="product">Product</button>
+  </div>
+  <div class="masonry" id="masonry">
+    <!-- items injected/enhanced by script also present statically for no-js fallback -->
+    <div class="masonry-item" data-cat="photo"><img loading="lazy" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=700&auto=format&fit=crop" alt="Retouched portrait, moody light"><div class="item-overlay"><span>Portrait Retouch</span><small>Photo Editing</small></div></div>
+    <div class="masonry-item" data-cat="design"><img loading="lazy" src="https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=700&auto=format&fit=crop" alt="Poster design layout"><div class="item-overlay"><span>Film Poster</span><small>Graphic Design</small></div></div>
+    <div class="masonry-item" data-cat="product"><img loading="lazy" src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=700&auto=format&fit=crop" alt="Product shot with clean background"><div class="item-overlay"><span>Product Shot</span><small>E-commerce</small></div></div>
+    <div class="masonry-item" data-cat="social"><img loading="lazy" src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=700&auto=format&fit=crop" alt="Social media grid design"><div class="item-overlay"><span>Brand Grid</span><small>Social Media</small></div></div>
+    <div class="masonry-item" data-cat="photo"><img loading="lazy" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=700&auto=format&fit=crop" alt="Color graded landscape"><div class="item-overlay"><span>Color Grade</span><small>Photo Editing</small></div></div>
+    <div class="masonry-item" data-cat="design"><img loading="lazy" src="https://images.unsplash.com/photo-1611162458324-aae1eb4129a4?q=80&w=700&auto=format&fit=crop" alt="Logo design mockup"><div class="item-overlay"><span>Logo System</span><small>Branding</small></div></div>
+    <div class="masonry-item" data-cat="product"><img loading="lazy" src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=700&auto=format&fit=crop" alt="Product editing sneaker"><div class="item-overlay"><span>Sneaker Edit</span><small>Product</small></div></div>
+    <div class="masonry-item" data-cat="social"><img loading="lazy" src="https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?q=80&w=700&auto=format&fit=crop" alt="Reel cover design"><div class="item-overlay"><span>Reel Cover</span><small>Content</small></div></div>
+    <div class="masonry-item" data-cat="photo"><img loading="lazy" src="https://images.unsplash.com/photo-1520466809213-7b9a56adcd45?q=80&w=700&auto=format&fit=crop" alt="Fashion editorial retouch"><div class="item-overlay"><span>Editorial Retouch</span><small>Photo Editing</small></div></div>
+  </div>
+</section>
+
+<!-- ============ LIGHTBOX ============ -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close preview"><i class="fa-solid fa-xmark"></i></button>
+  <button class="lightbox-nav prev" id="lightboxPrev" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
+  <img src="" alt="" id="lightboxImg">
+  <button class="lightbox-nav next" id="lightboxNext" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
+</div>
+
+<!-- ============ BEFORE / AFTER ============ -->
+<section class="compare-section" id="compare">
+  <div class="section-head">
+    <p class="eyebrow reveal-up">The Difference</p>
+    <h2 class="reveal-up">Before &amp; After</h2>
+    <p class="section-sub reveal-up">Drag the slider to see the transformation.</p>
+  </div>
+  <div class="compare-wrap reveal-up">
+    <div class="compare-slider" id="compareSlider">
+      <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=1200&auto=format&fit=crop&sat=-100&con=-10" alt="Before editing photo" class="compare-img-before">
+      <div class="compare-after-wrap">
+        <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=1200&auto=format&fit=crop" alt="After editing photo" class="compare-img-after">
+      </div>
+      <div class="compare-handle" id="compareHandle">
+        <i class="fa-solid fa-left-right"></i>
+      </div>
+      <span class="compare-label label-before">BEFORE</span>
+      <span class="compare-label label-after">AFTER</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VIDEO SHOWCASE ============ -->
+<section class="reels" id="reels">
+  <div class="section-head">
+    <p class="eyebrow reveal-up">Motion Work</p>
+    <h2 class="reveal-up">Video Editing Showcase</h2>
+  </div>
+  <div class="reels-grid">
+    <div class="reel-card reveal-up">
+      <video muted loop playsinline preload="metadata" poster="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=700&auto=format&fit=crop">
+        <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm" type="video/webm">
+      </video>
+      <div class="reel-overlay"><button class="play-btn" aria-label="Play video"><i class="fa-solid fa-play"></i></button><span>Brand Reel — Bloom Co.</span></div>
+    </div>
+    <div class="reel-card reveal-up">
+      <video muted loop playsinline preload="metadata" poster="https://images.unsplash.com/photo-1478720568477-152d9b164e26?q=80&w=700&auto=format&fit=crop">
+        <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm" type="video/webm">
+      </video>
+      <div class="reel-overlay"><button class="play-btn" aria-label="Play video"><i class="fa-solid fa-play"></i></button><span>Travel Highlight Reel</span></div>
+    </div>
+    <div class="reel-card reveal-up">
+      <video muted loop playsinline preload="metadata" poster="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=700&auto=format&fit=crop">
+        <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm" type="video/webm">
+      </video>
+      <div class="reel-overlay"><button class="play-btn" aria-label="Play video"><i class="fa-solid fa-play"></i></button><span>Product Launch Teaser</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="testimonials" id="testimonials">
+  <div class="section-head">
+    <p class="eyebrow reveal-up">Testimonials</p>
+    <h2 class="reveal-up">What clients say</h2>
+  </div>
+  <div class="testimonial-carousel reveal-up">
+    <div class="testimonial-track" id="testimonialTrack">
+      <div class="testimonial-card">
+        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <p>"Aarav turned 200 raw product shots into a catalog that finally matched our brand. Fast, precise, and endlessly patient with revisions."</p>
+        <div class="testimonial-author"><img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client Meera Shah" loading="lazy"><div><strong>Meera Shah</strong><small>Founder, Lumen Studio</small></div></div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <p>"Our reel views tripled after Aarav restructured our editing style. He understands pacing and platform trends better than most agencies."</p>
+        <div class="testimonial-author"><img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client Rohan Verma" loading="lazy"><div><strong>Rohan Verma</strong><small>Creator, @rohanexplores</small></div></div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></div>
+        <p>"The rebrand — logo, posters, and social templates — felt custom in every pixel. Communication was clear from brief to delivery."</p>
+        <div class="testimonial-author"><img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Client Elena Cruz" loading="lazy"><div><strong>Elena Cruz</strong><small>Marketing Lead, Norte Apparel</small></div></div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <p>"Best retouching I've commissioned. Skin looks like skin, not plastic. Turnaround was two days for a 40-image wedding set."</p>
+        <div class="testimonial-author"><img src="https://randomuser.me/api/portraits/men/76.jpg" alt="Client David Okafor" loading="lazy"><div><strong>David Okafor</strong><small>Wedding Photographer</small></div></div>
+      </div>
+    </div>
+    <div class="testimonial-dots" id="testimonialDots"></div>
+  </div>
+</section>
+
+<!-- ============ PRICING ============ -->
+<section class="pricing" id="pricing">
+  <div class="section-head">
+    <p class="eyebrow reveal-up">Pricing</p>
+    <h2 class="reveal-up">Simple, transparent plans</h2>
+  </div>
+  <div class="pricing-grid">
+    <div class="price-card reveal-up">
+      <h3>Basic</h3>
+      <p class="price-desc">For solo creators &amp; small edits</p>
+      <div class="price">$49<small>/ project</small></div>
+      <ul>
+        <li><i class="fa-solid fa-check"></i> Up to 10 photo edits</li>
+        <li><i class="fa-solid fa-check"></i> Basic color correction</li>
+        <li><i class="fa-solid fa-check"></i> 2-day delivery</li>
+        <li><i class="fa-solid fa-check"></i> 1 revision round</li>
+      </ul>
+      <a href="#contact" class="btn btn-outline">Get Started</a>
+    </div>
+    <div class="price-card featured reveal-up">
+      <span class="badge">Most Popular</span>
+      <h3>Standard</h3>
+      <p class="price-desc">For growing brands &amp; creators</p>
+      <div class="price">$149<small>/ project</small></div>
+      <ul>
+        <li><i class="fa-solid fa-check"></i> Up to 30 photo edits</li>
+        <li><i class="fa-solid fa-check"></i> Advanced retouching &amp; grading</li>
+        <li><i class="fa-solid fa-check"></i> 1 social media kit</li>
+        <li><i class="fa-solid fa-check"></i> 3 revision rounds</li>
+        <li><i class="fa-solid fa-check"></i> 3-day delivery</li>
+      </ul>
+      <a href="#contact" class="btn btn-primary btn-glow">Get Started</a>
+    </div>
+    <div class="price-card reveal-up">
+      <h3>Premium</h3>
+      <p class="price-desc">For full brand &amp; video needs</p>
+      <div class="price">$399<small>/ project</small></div>
+      <ul>
+        <li><i class="fa-solid fa-check"></i> Unlimited photo edits</li>
+        <li><i class="fa-solid fa-check"></i> Full brand design system</li>
+        <li><i class="fa-solid fa-check"></i> 1 video edit (up to 3 min)</li>
+        <li><i class="fa-solid fa-check"></i> Unlimited revisions</li>
+        <li><i class="fa-solid fa-check"></i> Priority 24h support</li>
+      </ul>
+      <a href="#contact" class="btn btn-outline">Get Started</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BLOG ============ -->
+<section class="blog" id="blog">
+  <div class="section-head">
+    <p class="eyebrow reveal-up">Journal</p>
+    <h2 class="reveal-up">Notes on craft</h2>
+  </div>
+  <div class="blog-grid">
+    <a href="#" class="blog-card reveal-up">
+      <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=700&auto=format&fit=crop" alt="Color grading workflow" loading="lazy">
+      <div class="blog-body"><span class="blog-tag">Color Grading</span><h3>5 LUTs I actually use in client work</h3><small>6 min read</small></div>
+    </a>
+    <a href="#" class="blog-card reveal-up">
+      <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=700&auto=format&fit=crop" alt="Retouching techniques" loading="lazy">
+      <div class="blog-body"><span class="blog-tag">Retouching</span><h3>Frequency separation without the plastic look</h3><small>8 min read</small></div>
+    </a>
+    <a href="#" class="blog-card reveal-up">
+      <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=700&auto=format&fit=crop" alt="Branding design tips" loading="lazy">
+      <div class="blog-body"><span class="blog-tag">Branding</span><h3>Building a social kit clients don't outgrow</h3><small>5 min read</small></div>
+    </a>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="faq" id="faq">
+  <div class="section-head">
+    <p class="eyebrow reveal-up">FAQ</p>
+    <h2 class="reveal-up">Frequently asked questions</h2>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item reveal-up">
+      <button class="faq-question">What's your typical turnaround time? <i class="fa-solid fa-chevron-down"></i></button>
+      <div class="faq-answer"><p>Most photo editing projects are delivered within 2–4 days. Video and full brand systems typically take 5–10 days depending on scope. Rush delivery is available on request.</p></div>
+    </div>
+    <div class="faq-item reveal-up">
+      <button class="faq-question">How many revisions are included? <i class="fa-solid fa-chevron-down"></i></button>
+      <div class="faq-answer"><p>Every plan includes at least one revision round. Standard and Premium plans include multiple rounds — see the pricing section for exact details.</p></div>
+    </div>
+    <div class="faq-item reveal-up">
+      <button class="faq-question">What file formats do you deliver? <i class="fa-solid fa-chevron-down"></i></button>
+      <div class="faq-answer"><p>You'll receive high-resolution JPEG and TIFF for photos, layered PSD/AI files on request, and MP4/MOV for video — optimized for web, print, or social as needed.</p></div>
+    </div>
+    <div class="faq-item reveal-up">
+      <button class="faq-question">Do you work with international clients? <i class="fa-solid fa-chevron-down"></i></button>
+      <div class="faq-answer"><p>Yes — I've delivered projects for clients in 15+ countries. All communication and files are handled remotely via email, WhatsApp, or your preferred tool.</p></div>
+    </div>
+    <div class="faq-item reveal-up">
+      <button class="faq-question">What's your payment process? <i class="fa-solid fa-chevron-down"></i></button>
+      <div class="faq-answer"><p>A 50% deposit secures your project slot, with the balance due on final delivery. I accept bank transfer, PayPal, and major payment links.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NEWSLETTER ============ -->
+<section class="newsletter">
+  <div class="newsletter-inner reveal-up">
+    <div>
+      <h2>Get edit tips &amp; project drops in your inbox</h2>
+      <p>One short email a month. No spam, unsubscribe anytime.</p>
+    </div>
+    <form id="newsletterForm" class="newsletter-form">
+      <input type="email" placeholder="you@email.com" required aria-label="Email address">
+      <button type="submit" class="btn btn-primary btn-glow">Subscribe</button>
+    </form>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="contact" id="contact">
+  <div class="section-head">
+    <p class="eyebrow reveal-up">Contact</p>
+    <h2 class="reveal-up">Let's build something remarkable</h2>
+  </div>
+  <div class="contact-grid">
+    <form class="contact-form glass-card reveal-left" id="contactForm">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="name" required placeholder="Jane Doe">
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" required placeholder="jane@email.com">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="service">Project Type</label>
+        <select id="service" name="service">
+          <option>Photo Editing</option>
+          <option>Graphic Design</option>
+          <option>Video Editing</option>
+          <option>Full Brand Package</option>
+          <option>Something else</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="message">Project Details</label>
+        <textarea id="message" name="message" rows="5" required placeholder="Tell me about your project..."></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary btn-glow full-width"><i class="fa-solid fa-paper-plane"></i> Send Message</button>
+      <p class="form-status" id="formStatus" role="status"></p>
+    </form>
+    <div class="contact-side reveal-right">
+      <div class="glass-card contact-info">
+        <h3>Direct Contact</h3>
+        <a href="https://wa.me/919999999999" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> +91 99999 99999</a>
+        <a href="mailto:hello@aaravmehta.design"><i class="fa-solid fa-envelope"></i> hello@aaravmehta.design</a>
+        <a href="https://t.me/aaravmehta" target="_blank" rel="noopener"><i class="fa-brands fa-telegram"></i> @aaravmehta</a>
+        <div class="social-row">
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+          <a href="#" aria-label="Behance"><i class="fa-brands fa-behance"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
+      </div>
+      <div class="glass-card map-card">
+        <iframe title="Studio location map" src="https://www.google.com/maps?q=Mumbai,India&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#home" class="logo">AA<span>RAV</span><i class="fa-solid fa-aperture logo-icon"></i></a>
+      <p>Freelance photo editor, graphic designer &amp; content creator crafting cinematic visuals for brands that refuse to blend in.</p>
+      <div class="social-row">
+        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+        <a href="https://wa.me/919999999999" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="https://t.me/aaravmehta" aria-label="Telegram"><i class="fa-brands fa-telegram"></i></a>
+      </div>
+    </div>
+    <div class="footer-links">
+      <h4>Navigate</h4>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#pricing">Pricing</a>
+    </div>
+    <div class="footer-links">
+      <h4>Services</h4>
+      <a href="#services">Photo Editing</a>
+      <a href="#services">Graphic Design</a>
+      <a href="#reels">Video Editing</a>
+      <a href="#contact">Custom Project</a>
+    </div>
+    <div class="footer-links">
+      <h4>Studio</h4>
+      <p><i class="fa-solid fa-location-dot"></i> Mumbai, India</p>
+      <p><i class="fa-solid fa-envelope"></i> hello@aaravmehta.design</p>
+      <p><i class="fa-solid fa-clock"></i> Mon–Sat, 10am–7pm IST</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© <span id="year"></span> Aarav Mehta. All rights reserved.</p>
+    <p>Designed &amp; built with <i class="fa-solid fa-heart"></i> in Mumbai</p>
+  </div>
+</footer>
+
+<!-- ============ FLOATING BUTTONS ============ -->
+<a href="https://wa.me/919999999999" target="_blank" rel="noopener" class="float-whatsapp" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+<button class="back-to-top" id="backToTop" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+<script src="script.js"></script>
+</body>
+</html>
