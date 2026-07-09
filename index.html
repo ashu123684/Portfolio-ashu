@@ -446,7 +446,16 @@
     <h2 class="reveal-up">Let's build something remarkable</h2>
   </div>
   <div class="contact-grid">
-    
+<form class="contact-form glass-card reveal-left"
+      id="contactForm"
+      name="contact"
+      method="POST"
+      data-netlify="true"
+      netlify>
+
+<input type="hidden" name="form-name" value="contact">
+
+  
       <div class="form-row">
         <div class="form-group">
           <label for="name">Full Name</label>
@@ -473,15 +482,8 @@
       </div>
       <button type="submit" class="btn btn-primary btn-glow full-width"><i class="fa-solid fa-paper-plane"></i> Send Message</button>
       <p class="form-status" id="formStatus" role="status"></p>
-    <form
-  class="contact-form glass-card reveal-left"
-  id="contactForm"
-  name="contact"
-  method="POST"
-  data-netlify="true"
-  netlify
->
-<input type="hidden" name="form-name" value="contact">
+</form>
+
     
     
     
